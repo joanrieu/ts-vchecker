@@ -9,7 +9,7 @@ export { vNull } from "./vNull";
 export { vNumber } from "./vNumber";
 export { vObject } from "./vObject";
 export { vRefine } from "./vRefine";
-export { vRefineType } from "./vRefineType";
 export { vString } from "./vString";
 export { vUndefined } from "./vUndefined";
 export { vUnion } from "./vUnion";
+export { vValidate } from "./vValidate";

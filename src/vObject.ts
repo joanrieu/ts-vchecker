@@ -17,9 +17,7 @@ export function vObject<T>(
       typeof x === "object" &&
       x !== null &&
       Object.keys(schema).every((k) =>
-        ((schema[k as keyof typeof schema] as any) ?? (() => false))(
-          x[k as keyof typeof x]
-        )
+        (schema[k as keyof typeof schema] as any)(x[k as keyof typeof x])
       )
     );
   };
