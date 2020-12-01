@@ -17,6 +17,7 @@ The following declarations are available (see documentation below):
 | Type                         | Declaration          | Notes                                                         |
 | ---------------------------- | -------------------- | ------------------------------------------------------------- |
 | **_Values:_**                |                      |                                                               |
+| `boolean`                    | `vBoolean`           |                                                               |
 | `number`                     | `vNumber()`          |                                                               |
 | `string`                     | `vString()`          |                                                               |
 | `null`                       | `vNull()`            |                                                               |
@@ -105,6 +106,15 @@ function vArray(checker: VChecker<T> = vAny()): VChecker<T[]>
 - This checker returns `true` for arrays of correctly typed values
 - This checker returns `false` for non-arrays
 - This checker returns `false` for arrays of incorrectly typed values
+
+### Boolean
+
+```ts
+function vBoolean(): VChecker<boolean>
+```
+
+- This checker returns `true` for booleans
+- This checker returns `false` for non-booleans
 
 ### Intersection
 
