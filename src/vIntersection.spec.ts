@@ -2,7 +2,7 @@ import { anything, assert, boolean, property } from "fast-check";
 import { vIntersection } from "./vIntersection";
 
 describe(vIntersection, () => {
-  it("returns true if and only if all checks return true", () =>
+  it("returns `true` if and only if all checks return `true`", () =>
     assert(
       property(
         boolean(),

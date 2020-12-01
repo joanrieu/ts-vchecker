@@ -1,5 +1,6 @@
 import {
   anything,
+  array,
   assert,
   boolean,
   object,
@@ -10,13 +11,7 @@ import {
 import { vObject } from "./vObject";
 
 describe(vObject, () => {
-  it("returns true for empty objects", () =>
-    expect(vObject({})({})).toBe(true));
-
-  it("returns true for objects with extra properties", () =>
-    assert(property(object(), (x) => expect(vObject({})(x)).toBe(true))));
-
-  it("returns true if and only if all values in schema match", () =>
+  it("returns `true` if and only if all values in schema match", () =>
     assert(
       property(
         tuple(string(), boolean(), string(), boolean()).filter(
@@ -30,7 +25,15 @@ describe(vObject, () => {
       )
     ));
 
-  it("returns false for non-objects", () =>
+  it("returns `true` for an array if the array matches the schema (weird JavaScript quirk)", () =>
+    assert(
+      property(array(anything()), (x) => expect(vObject({})(x)).toBe(true))
+    ));
+
+  it("returns `true` for objects with extra properties", () =>
+    assert(property(object(), (x) => expect(vObject({})(x)).toBe(true))));
+
+  it("returns `false` for non-objects", () =>
     assert(
       property(
         anything().filter((x) => typeof x !== "object"),

@@ -2,7 +2,7 @@ import { anything, assert, boolean, property } from "fast-check";
 import { vRefine } from "./vRefine";
 
 describe(vRefine, () => {
-  it("returns true if and only if both checks return true", () =>
+  it("returns `true` if and only if both checks return `true`", () =>
     assert(
       property(boolean(), boolean(), anything(), (x, y, z) =>
         expect(

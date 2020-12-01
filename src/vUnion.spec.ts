@@ -4,7 +4,7 @@ import { vNumber } from "./vNumber";
 import { vString } from "./vString";
 
 describe(vUnion, () => {
-  it("returns true for values of one of the given types", () =>
+  it("returns `true` for values of one of the given types", () =>
     assert(
       property(
         anything().filter(
@@ -14,7 +14,7 @@ describe(vUnion, () => {
       )
     ));
 
-  it("returns false for values not of one of the given types", () =>
+  it("returns `false` for values not of one of the given types", () =>
     assert(
       property(
         anything().filter(
