@@ -17,7 +17,7 @@ The following declarations are available (see documentation below):
 | Type                         | Declaration          | Notes                                                         |
 | ---------------------------- | -------------------- | ------------------------------------------------------------- |
 | **_Values:_**                |                      |                                                               |
-| `boolean`                    | `vBoolean`           |                                                               |
+| `boolean`                    | `vBoolean()`         |                                                               |
 | `number`                     | `vNumber()`          |                                                               |
 | `string`                     | `vString()`          |                                                               |
 | `null`                       | `vNull()`            |                                                               |
