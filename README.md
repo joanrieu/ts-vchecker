@@ -1,6 +1,10 @@
-# VChecker
+# TS VChecker
 
 _Minimal validation library with TypeScript type inference_
+
+```
+npm install ts-vchecker
+```
 
 ## Features
 
@@ -35,7 +39,7 @@ The following declarations are available (see documentation below):
 Declare both your type and the validation function at once:
 
 ```ts
-export type MovedEvent = VChecked<typeof isMovedEvent>;
+export type MovedEvent = VCheckerType<typeof isMovedEvent>;
 export const isMovedEvent = vObject({
   type: vLiteral("moved"),
   data: vUnion(
@@ -164,7 +168,7 @@ function vObject(
   schema: T
 ): VChecker<
   {
-    [K in keyof T]: VChecked<T[K]>;
+    [K in keyof T]: VCheckerType<T[K]>;
   }
 >
 ```

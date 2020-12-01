@@ -1,7 +1,11 @@
 {
-  "name": "vchecker",
+  "name": "ts-vchecker",
   "version": "1.0.0",
   "description": "Minimal validation library with TypeScript type inference",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/joanrieu/ts-vchecker"
+  },
   "main": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "scripts": {

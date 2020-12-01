@@ -1,17 +1,16 @@
-import { VChecked } from "./VChecked";
-import { VChecker } from "./VChecker";
+import { VChecker, VCheckerType } from "./VChecker";
 
 export function vObject<T>(
   schema: T
 ): VChecker<
   {
-    [K in keyof T]: VChecked<T[K]>;
+    [K in keyof T]: VCheckerType<T[K]>;
   }
 > {
   return function (
     x: unknown
   ): x is {
-    [K in keyof T]: VChecked<T[K]>;
+    [K in keyof T]: VCheckerType<T[K]>;
   } {
     return (
       typeof x === "object" &&

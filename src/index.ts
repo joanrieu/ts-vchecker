@@ -1,7 +1,6 @@
 export { vAny } from "./vAny";
 export { vArray } from "./vArray";
-export type { VChecked } from "./VChecked";
-export type { VChecker } from "./VChecker";
+export type { VChecker, VCheckerType } from "./VChecker";
 export { vIntersection } from "./vIntersection";
 export { vLiteral } from "./vLiteral";
 export { vNever } from "./vNever";
