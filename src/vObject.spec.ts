@@ -11,7 +11,7 @@ import {
 import { vObject } from "./vObject";
 
 describe(vObject, () => {
-  it("returns `true` if and only if all values in schema match", () =>
+  it("returns `true` if and only if the specified properties are correctly typed", () =>
     assert(
       property(
         tuple(string(), boolean(), string(), boolean()).filter(
@@ -25,7 +25,7 @@ describe(vObject, () => {
       )
     ));
 
-  it("returns `true` for an array if the array matches the schema (weird JavaScript quirk)", () =>
+  it("returns `true` for an array if the array matches the schema (JavaScript quirk)", () =>
     assert(
       property(array(anything()), (x) => expect(vObject({})(x)).toBe(true))
     ));
