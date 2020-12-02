@@ -183,8 +183,8 @@ function vObject(
 >
 ```
 
-- This checker returns `true` if and only if all values in schema match
-- This checker returns `true` for an array if the array matches the schema (weird JavaScript quirk)
+- This checker returns `true` if and only if the specified properties are correctly typed
+- This checker returns `true` for an array if the array matches the schema (JavaScript quirk)
 - This checker returns `true` for objects with extra properties
 - This checker returns `false` for non-objects
 
