@@ -1,4 +1,4 @@
-import { VChecker } from "./VChecker";
+import { VChecker, VReason } from "./VChecker";
 import { vNever } from "./vNever";
 
 export function vUnion<
@@ -24,20 +24,49 @@ export function vUnion<
   schema9: VChecker<T9> = vNever(),
   schema10: VChecker<T10> = vNever()
 ): VChecker<T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10> {
-  return function (
-    x: unknown
-  ): x is T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 {
-    return (
-      schema1(x) ||
-      schema2(x) ||
-      schema3(x) ||
-      schema4(x) ||
-      schema5(x) ||
-      schema6(x) ||
-      schema7(x) ||
-      schema8(x) ||
-      schema9(x) ||
-      schema10(x)
-    );
-  };
+  return Object.assign(
+    function (
+      x: unknown
+    ): x is T1 | T2 | T3 | T4 | T5 | T6 | T7 | T8 | T9 | T10 {
+      return (
+        schema1(x) ||
+        schema2(x) ||
+        schema3(x) ||
+        schema4(x) ||
+        schema5(x) ||
+        schema6(x) ||
+        schema7(x) ||
+        schema8(x) ||
+        schema9(x) ||
+        schema10(x)
+      );
+    },
+    {
+      whyNot(x: unknown, path: string[] = []): VReason | null {
+        const reasons = [
+          schema1,
+          schema2,
+          schema3,
+          schema4,
+          schema5,
+          schema6,
+          schema7,
+          schema8,
+          schema9,
+          schema10,
+        ]
+          .filter((schema) => schema !== vNever())
+          .map((schema) => schema.whyNot(x, path));
+        if (!reasons.some((reason) => !reason)) {
+          return {
+            path,
+            message: "invalid subtype",
+            reasons: reasons as VReason[],
+          };
+        } else {
+          return null;
+        }
+      },
+    }
+  );
 }

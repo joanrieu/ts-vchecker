@@ -1,7 +1,17 @@
-import { VChecker } from "./VChecker";
+import { VChecker, VReason } from "./VChecker";
+
+function vNeverImpl(_x: unknown): _x is never {
+  return false;
+}
 
 export function vNever(): VChecker<never> {
-  return function (_x: unknown): _x is never {
-    return false;
-  };
+  return Object.assign(vNeverImpl, {
+    whyNot(x: unknown, path: string[] = []): VReason | null {
+      return {
+        path,
+        message: "unexpected value",
+        reasons: [],
+      };
+    },
+  });
 }
