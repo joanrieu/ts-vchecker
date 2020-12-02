@@ -1,4 +1,4 @@
-import { anything, array, assert, integer, property, string } from "fast-check";
+import { anything, array, assert, integer, property } from "fast-check";
 import { vArray } from "./vArray";
 import { vNumber } from "./vNumber";
 
@@ -11,7 +11,12 @@ describe(vArray, () => {
     ));
 
   it("returns `false` for non-arrays", () =>
-    assert(property(string(), (x) => expect(vArray()(x)).toBe(false))));
+    assert(
+      property(
+        anything().filter((x) => !Array.isArray(x)),
+        (x) => expect(vArray()(x)).toBe(false)
+      )
+    ));
 
   it("returns `false` for arrays of incorrectly typed values", () =>
     assert(
